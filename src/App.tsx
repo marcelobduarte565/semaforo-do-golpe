@@ -189,11 +189,6 @@ export default function App() {
           />
         )}
       </main>
-
-      {/* Footer Info Banner */}
-      <footer className="bg-gray-200 border-t-2 border-gray-300 py-4 px-6 text-center text-gray-800 text-[24px] font-bold uppercase">
-        SEMÁFORO DO GOLPE • ATIVIDADE EDUCATIVA PARA OFICINA DE INFORMÁTICA • TODOS OS NOMES E DADOS SÃO FICTÍCIOS
-      </footer>
     </div>
   );
 }
