@@ -75,7 +75,7 @@ export const FinalScreen: React.FC<FinalScreenProps> = ({
         </span>
       </button>
 
-      <div className="text-[22px] font-bold text-gray-600 uppercase text-center">
+      <div className="text-[24px] font-bold text-gray-700 uppercase text-center">
         CLIQUE ACIMA PARA REPETIR A ATIVIDADE E FIXAR O APRENDIZADO.
       </div>
     </div>

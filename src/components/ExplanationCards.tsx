@@ -1,6 +1,6 @@
 import React from 'react';
 import { MessageItem, TrafficColor } from '../types.ts';
-import { CheckCircle2, AlertCircle, ArrowRight, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react';
 
 interface ExplanationCardsProps {
   message: MessageItem;
@@ -42,10 +42,10 @@ export const ExplanationCards: React.FC<ExplanationCardsProps> = ({
   }[message.correctAnswer];
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-2xl mx-auto">
+    <div className="flex flex-col gap-5 w-full max-w-2xl mx-auto">
       {/* Result feedback banner */}
       {isCorrect ? (
-        <div className="bg-emerald-100 border-4 border-emerald-700 rounded-3xl p-6 flex items-center gap-5 shadow-lg">
+        <div className="bg-emerald-100 border-4 border-emerald-700 rounded-3xl p-5 sm:p-6 flex items-center gap-5 shadow-lg">
           <div className="w-16 h-16 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0">
             <CheckCircle2 className="w-12 h-12 stroke-[3]" />
           </div>
@@ -59,7 +59,7 @@ export const ExplanationCards: React.FC<ExplanationCardsProps> = ({
           </div>
         </div>
       ) : (
-        <div className="bg-amber-50 border-4 border-amber-600 rounded-3xl p-6 flex items-center gap-5 shadow-lg">
+        <div className="bg-amber-50 border-4 border-amber-600 rounded-3xl p-5 sm:p-6 flex items-center gap-5 shadow-lg">
           <div className="w-16 h-16 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0">
             <AlertCircle className="w-12 h-12 stroke-[3]" />
           </div>
@@ -76,10 +76,10 @@ export const ExplanationCards: React.FC<ExplanationCardsProps> = ({
 
       {/* Answer Callout Badge */}
       <div
-        className={`${colorBadgeStyle.bg} ${colorBadgeStyle.text} border-4 ${colorBadgeStyle.border} rounded-3xl p-6 shadow-xl`}
+        className={`${colorBadgeStyle.bg} ${colorBadgeStyle.text} border-4 ${colorBadgeStyle.border} rounded-3xl p-5 sm:p-6 shadow-xl`}
       >
-        <div className="text-[22px] font-bold uppercase opacity-90 tracking-wider">
-          CORRETISMO E CLASSIFICAÇÃO:
+        <div className="text-[24px] sm:text-[26px] font-black uppercase tracking-wider">
+          RESPOSTA CERTA:
         </div>
         <div className="text-[32px] sm:text-[36px] font-black leading-tight mt-1 flex items-center gap-3 flex-wrap">
           <span className={`inline-block w-6 h-6 rounded-full ${colorBadgeStyle.dot} border-2 border-white`} />
@@ -90,15 +90,28 @@ export const ExplanationCards: React.FC<ExplanationCardsProps> = ({
         </div>
       </div>
 
+      {/* Next Button placed right below correct color badge and BEFORE explanation cards */}
+      <button
+        type="button"
+        onClick={onNextMessage}
+        className="w-full min-h-[88px] px-8 py-5 rounded-3xl bg-blue-700 hover:bg-blue-800 active:scale-[0.98] text-white border-4 border-blue-950 shadow-2xl transition-all cursor-pointer flex items-center justify-center gap-4 focus:outline-none focus:ring-8 focus:ring-blue-300"
+        aria-label={isLastMessage ? 'VER RESULTADO FINAL' : 'PRÓXIMA MENSAGEM'}
+      >
+        <span className="text-[32px] sm:text-[36px] font-black tracking-wide">
+          {isLastMessage ? 'VER RESULTADO FINAL' : 'PRÓXIMA MENSAGEM'}
+        </span>
+        <ArrowRight className="w-10 h-10 stroke-[3.5]" />
+      </button>
+
       {/* 3 Explanation Quadros (Cards) */}
       <div className="flex flex-col gap-4">
         {message.cards.map((card, index) => (
           <div
             key={index}
-            className="bg-white border-4 border-gray-900 rounded-3xl p-6 shadow-md"
+            className="bg-white border-4 border-gray-900 rounded-3xl p-5 sm:p-6 shadow-md"
           >
             <div className="flex items-center gap-3 text-gray-950 border-b-2 border-gray-200 pb-2 mb-3">
-              <span className="w-9 h-9 rounded-full bg-blue-900 text-white text-[20px] font-black flex items-center justify-center shrink-0">
+              <span className="w-11 h-11 rounded-full bg-blue-900 text-white text-[24px] font-black flex items-center justify-center shrink-0">
                 {index + 1}
               </span>
               <h3 className="text-[26px] font-black tracking-wide text-gray-950">
@@ -122,19 +135,6 @@ export const ExplanationCards: React.FC<ExplanationCardsProps> = ({
           </div>
         ))}
       </div>
-
-      {/* Next Button */}
-      <button
-        type="button"
-        onClick={onNextMessage}
-        className="w-full min-h-[96px] px-8 py-6 rounded-3xl bg-blue-700 hover:bg-blue-800 active:scale-[0.98] text-white border-4 border-blue-950 shadow-2xl transition-all cursor-pointer flex items-center justify-center gap-4 focus:outline-none focus:ring-8 focus:ring-blue-300"
-        aria-label={isLastMessage ? 'VER RESULTADO FINAL' : 'PRÓXIMA MENSAGEM'}
-      >
-        <span className="text-[32px] sm:text-[36px] font-black tracking-wide">
-          {isLastMessage ? 'VER RESULTADO FINAL' : 'PRÓXIMA MENSAGEM'}
-        </span>
-        <ArrowRight className="w-10 h-10 stroke-[3.5]" />
-      </button>
     </div>
   );
 };

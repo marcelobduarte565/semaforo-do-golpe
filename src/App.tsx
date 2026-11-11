@@ -65,11 +65,11 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#F3F4F6] text-gray-950 flex flex-col font-sans select-none antialiased">
       {/* Top Header Bar */}
-      <header className="bg-gray-900 text-white border-b-4 border-gray-950 py-4 px-6 sm:px-10 sticky top-0 z-50 shadow-lg">
+      <header className="bg-gray-900 text-white border-b-4 border-gray-950 py-3.5 px-6 sm:px-10 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             {/* Traffic Light Icon Pill */}
-            <div className="flex items-center gap-1.5 bg-gray-800 p-2 rounded-2xl border-2 border-gray-700">
+            <div className="flex items-center gap-2 bg-gray-800 p-2 rounded-2xl border-2 border-gray-700">
               <span className="w-5 h-5 rounded-full bg-red-500 inline-block shadow-inner" />
               <span className="w-5 h-5 rounded-full bg-amber-400 inline-block shadow-inner" />
               <span className="w-5 h-5 rounded-full bg-green-500 inline-block shadow-inner" />
@@ -82,7 +82,7 @@ export default function App() {
           {/* Progress Indicator when inside quiz */}
           {(screen === 'QUESTION' || screen === 'ANSWER') && (
             <div className="flex items-center gap-4 bg-gray-800 px-6 py-2.5 rounded-2xl border-2 border-gray-700">
-              <span className="text-[24px] sm:text-[28px] font-black tracking-wide text-amber-300">
+              <span className="text-[26px] sm:text-[28px] font-black tracking-wide text-amber-300">
                 MENSAGEM {currentIndex + 1} DE {MESSAGES.length}
               </span>
               <div className="hidden lg:flex items-center gap-2">
@@ -105,11 +105,11 @@ export default function App() {
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 flex flex-col justify-center">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-5 flex flex-col justify-center">
         {screen === 'START' && <StartScreen onStart={handleStart} />}
 
         {(screen === 'QUESTION' || screen === 'ANSWER') && (
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4">
             {/* Context title / Question header */}
             <div className="bg-white border-4 border-gray-900 rounded-3xl p-4 sm:p-5 shadow-md flex items-center justify-between gap-4">
               <div className="flex items-center gap-4">
@@ -117,10 +117,10 @@ export default function App() {
                   {currentIndex + 1}
                 </span>
                 <div>
-                  <h2 className="text-[24px] sm:text-[28px] font-black uppercase text-gray-950 leading-tight">
+                  <h2 className="text-[26px] sm:text-[28px] font-black uppercase text-gray-950 leading-tight">
                     ANALISE A MENSAGEM NO CELULAR ABAIXO
                   </h2>
-                  <p className="text-[20px] font-bold text-gray-600 uppercase">
+                  <p className="text-[24px] font-bold text-gray-700 uppercase">
                     LEIA COM CALMA O TEXTO E QUEM ENVIOU
                   </p>
                 </div>
@@ -128,8 +128,8 @@ export default function App() {
 
               {screen === 'QUESTION' && (
                 <div className="hidden xl:flex items-center gap-2 text-blue-900 bg-blue-100 px-4 py-2 rounded-xl border border-blue-300">
-                  <HelpCircle className="w-6 h-6" />
-                  <span className="text-[19px] font-black uppercase">
+                  <HelpCircle className="w-7 h-7" />
+                  <span className="text-[24px] font-black uppercase">
                     PASSO 1: LER A MENSAGEM • PASSO 2: ESCOLHER A COR
                   </span>
                 </div>
@@ -140,25 +140,25 @@ export default function App() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               {/* Left Column: Phone mockup showing message */}
               <div className="lg:col-span-6 w-full flex flex-col gap-2">
-                <div className="text-[20px] font-black uppercase text-gray-700 px-2 flex items-center gap-2">
+                <div className="text-[24px] font-black uppercase text-gray-700 px-2 flex items-center gap-2">
                   <span>TELA DO CELULAR:</span>
                 </div>
                 <PhoneMockup message={currentMessage} />
               </div>
 
               {/* Right Column: Interaction Area */}
-              <div className="lg:col-span-6 w-full flex flex-col gap-5">
+              <div className="lg:col-span-6 w-full flex flex-col gap-4">
                 {screen === 'QUESTION' && (
-                  <div className="bg-white border-4 border-gray-900 rounded-3xl p-5 sm:p-7 shadow-xl flex flex-col gap-5">
+                  <div className="bg-white border-4 border-gray-900 rounded-3xl p-5 sm:p-6 shadow-xl flex flex-col gap-4">
                     {/* Prompt question as requested */}
-                    <div className="border-b-3 border-gray-200 pb-4">
-                      <div className="text-[20px] font-black text-blue-900 uppercase tracking-wider mb-1">
+                    <div className="border-b-3 border-gray-200 pb-3">
+                      <div className="text-[24px] font-black text-blue-900 uppercase tracking-wider mb-1">
                         PERGUNTA DO SEMÁFORO:
                       </div>
-                      <h3 className="text-[26px] sm:text-[30px] font-black text-gray-950 uppercase leading-snug">
+                      <h3 className="text-[28px] sm:text-[32px] font-black text-gray-950 uppercase leading-snug">
                         O QUE ESSA MENSAGEM QUER QUE EU FAÇA? E COM QUE PRESSA?
                       </h3>
-                      <p className="text-[22px] font-bold text-gray-700 uppercase mt-2">
+                      <p className="text-[24px] font-bold text-gray-700 uppercase mt-2">
                         CLIQUE NO BOTÃO DA COR QUE VOCÊ ACHA CERTA:
                       </p>
                     </div>
@@ -191,7 +191,7 @@ export default function App() {
       </main>
 
       {/* Footer Info Banner */}
-      <footer className="bg-gray-200 border-t-2 border-gray-300 py-4 px-6 text-center text-gray-700 text-[20px] font-bold uppercase">
+      <footer className="bg-gray-200 border-t-2 border-gray-300 py-4 px-6 text-center text-gray-800 text-[24px] font-bold uppercase">
         SEMÁFORO DO GOLPE • ATIVIDADE EDUCATIVA PARA OFICINA DE INFORMÁTICA • TODOS OS NOMES E DADOS SÃO FICTÍCIOS
       </footer>
     </div>

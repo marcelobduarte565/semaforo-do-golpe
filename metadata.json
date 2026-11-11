@@ -2,5 +2,5 @@
   "name": "SEMÁFORO DO GOLPE",
   "description": "Aplicativo educativo com semáforo de segurança contra golpes em mensagens de WhatsApp e SMS para oficinas de informática da terceira idade.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { MessageItem } from '../types.ts';
-import { ShieldAlert, CheckCircle, User, MessageSquare } from 'lucide-react';
+import { ShieldAlert, User, MessageSquare } from 'lucide-react';
 
 interface PhoneMockupProps {
   message: MessageItem;
@@ -20,26 +20,26 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({ message }) => {
       <div className="overflow-hidden rounded-[24px] border-2 border-gray-800 flex flex-col min-h-[460px] bg-white">
         {/* App Header */}
         {isWhatsApp ? (
-          <div className="bg-[#075E54] text-white px-4 py-3 border-b-2 border-[#054c44]">
+          <div className="bg-[#075E54] text-white px-4 py-3.5 border-b-2 border-[#054c44]">
             <div className="flex items-center gap-3">
               {/* Contact Avatar */}
-              <div className="w-13 h-13 rounded-full bg-white/20 border-2 border-white/40 flex items-center justify-center shrink-0">
-                <User className="w-8 h-8 text-white" />
+              <div className="w-14 h-14 rounded-full bg-white/20 border-2 border-white/40 flex items-center justify-center shrink-0">
+                <User className="w-9 h-9 text-white" />
               </div>
 
               {/* Contact Info */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="text-[23px] font-black tracking-wide truncate">
+                  <span className="text-[26px] font-black tracking-wide truncate">
                     {message.sender}
                   </span>
                 </div>
-                <div className="text-[18px] font-bold text-emerald-100 flex items-center gap-2 tracking-wide">
+                <div className="text-[24px] font-bold text-emerald-100 flex items-center gap-2 tracking-wide leading-tight">
                   {message.statusLine === 'NÃO ESTÁ NOS SEUS CONTATOS' && (
-                    <span className="inline-block w-3 h-3 rounded-full bg-amber-400 shrink-0" />
+                    <span className="inline-block w-4 h-4 rounded-full bg-amber-400 shrink-0" />
                   )}
                   {message.statusLine === 'ONLINE' && (
-                    <span className="inline-block w-3 h-3 rounded-full bg-emerald-400 shrink-0" />
+                    <span className="inline-block w-4 h-4 rounded-full bg-emerald-400 shrink-0" />
                   )}
                   <span>{message.statusLine}</span>
                 </div>
@@ -47,16 +47,16 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({ message }) => {
             </div>
           </div>
         ) : (
-          <div className="bg-[#F2F2F7] text-gray-900 px-4 py-3 border-b-2 border-gray-300">
+          <div className="bg-[#F2F2F7] text-gray-900 px-4 py-3.5 border-b-2 border-gray-300">
             <div className="flex items-center gap-3">
-              <div className="w-13 h-13 rounded-full bg-gray-300 border-2 border-gray-400 flex items-center justify-center shrink-0">
-                <MessageSquare className="w-8 h-8 text-gray-700" />
+              <div className="w-14 h-14 rounded-full bg-gray-300 border-2 border-gray-400 flex items-center justify-center shrink-0">
+                <MessageSquare className="w-9 h-9 text-gray-700" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-[23px] font-black tracking-wide text-gray-950 truncate">
+                <div className="text-[26px] font-black tracking-wide text-gray-950 truncate">
                   {message.sender}
                 </div>
-                <div className="text-[18px] font-bold text-gray-600 tracking-wide">
+                <div className="text-[24px] font-bold text-gray-700 tracking-wide leading-tight">
                   {message.statusLine}
                 </div>
               </div>
@@ -66,12 +66,12 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({ message }) => {
 
         {/* Message Body Area */}
         <div
-          className={`flex-1 p-4 sm:p-5 flex flex-col gap-3.5 justify-start ${
+          className={`flex-1 p-4 sm:p-5 flex flex-col gap-4 justify-start ${
             isWhatsApp ? 'bg-[#EFEAE2]' : 'bg-[#FAFAFC]'
           }`}
         >
           {/* Day marker */}
-          <div className="self-center bg-black/10 text-gray-800 text-[18px] font-bold px-4 py-1.5 rounded-full shadow-xs">
+          <div className="self-center bg-black/10 text-gray-800 text-[24px] font-black px-5 py-1.5 rounded-full shadow-xs">
             HOJE
           </div>
 
@@ -79,20 +79,20 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({ message }) => {
           {message.bubbles.map((b) => (
             <div
               key={b.id}
-              className={`max-w-[94%] rounded-2xl p-5 shadow-md border-2 ${
+              className={`max-w-[95%] rounded-2xl p-4 sm:p-5 shadow-md border-2 ${
                 isWhatsApp
                   ? 'bg-white text-gray-950 border-gray-200 self-start rounded-tl-xs'
                   : 'bg-[#E9E9EB] text-gray-950 border-gray-300 self-start rounded-tl-xs'
               }`}
             >
-              <div className="text-[24px] sm:text-[26px] font-semibold leading-snug tracking-wide select-text">
+              <div className="text-[26px] sm:text-[28px] font-semibold leading-snug tracking-wide select-text">
                 {b.fullText && <span>{b.fullText}</span>}
 
                 {b.prefixText && <span>{b.prefixText}</span>}
 
                 {b.linkText && (
                   <span
-                    className="text-blue-700 underline font-mono font-bold lowercase tracking-normal cursor-default inline-block px-1 bg-blue-50 rounded"
+                    className="text-blue-700 underline font-mono font-bold lowercase tracking-normal cursor-default inline-block px-1.5 py-0.5 bg-blue-50 rounded"
                     title="ENDEREÇO DE SITE NÃO CLICÁVEL"
                   >
                     {b.linkText}
@@ -103,7 +103,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({ message }) => {
               </div>
 
               {b.time && (
-                <div className="text-right text-[18px] font-bold text-gray-500 mt-2">
+                <div className="text-right text-[24px] font-bold text-gray-600 mt-2">
                   {b.time}
                 </div>
               )}
@@ -112,9 +112,9 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({ message }) => {
 
           {/* Warning label at bottom of phone simulation */}
           {message.statusLine === 'NÃO ESTÁ NOS SEUS CONTATOS' && (
-            <div className="mt-auto bg-amber-100 border-2 border-amber-400 text-amber-950 p-3 rounded-xl flex items-center gap-3">
-              <ShieldAlert className="w-8 h-8 text-amber-700 shrink-0" />
-              <span className="text-[20px] font-black leading-tight">
+            <div className="mt-auto bg-amber-100 border-3 border-amber-500 text-amber-950 p-3.5 rounded-2xl flex items-center gap-3">
+              <ShieldAlert className="w-9 h-9 text-amber-700 shrink-0" />
+              <span className="text-[24px] font-black leading-tight">
                 ATENÇÃO: NÚMERO DESCONHECIDO!
               </span>
             </div>
@@ -122,7 +122,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({ message }) => {
         </div>
 
         {/* Phone Bottom Footer Decorator */}
-        <div className="bg-gray-100 py-3 px-5 border-t border-gray-300 flex items-center justify-center text-gray-500 text-[18px] font-bold">
+        <div className="bg-gray-100 py-3.5 px-4 border-t border-gray-300 flex items-center justify-center text-gray-700 text-[24px] font-black">
           {isWhatsApp ? 'MENSAGEM RECEBIDA VIA WHATSAPP' : 'MENSAGEM RECEBIDA VIA SMS'}
         </div>
       </div>
